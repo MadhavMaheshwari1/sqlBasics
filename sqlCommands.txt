@@ -16,3 +16,62 @@ SELECT 44+11;
 
 WHERE CLAUSE - Narrow down the entries by using conditions with WHERE clause...
 BETWEEN CLAUSE - Range based search with the help of WHERE and BETWEEN clause...
+IN CLAUSE - Reduce multiple or by providing a list to IN...
+AND, OR, NOT...
+is NULL to check for NULL value and can't be checked by other clauses and returns a row...
+
+We can also query through wildcards by using LIKE keyword:
+1. '%p%', any no. of chars before p and after p can be there...
+2. '_p%, underscore denotes just one character and after p any no. of chars...
+3. '_p_', only 3 letter words are considerable in which p is the second character...
+
+Sorting in SQL:
+SELECT * FROM Customers ORDER BY age DESC;
+
+Distinct values in SQL:
+SELECT DISTINCT country FROM Customers ORDER BY age DESC;
+
+Grouping in SQL:
+If no aggregation function is applied, it works similarly to distinct command in SQL...
+Aggregation - Reducing a large set of values into a single value...
+1. COUNT(*) when you don't care about non-null values...
+2. COUNT(columnName) when you care about non-null values...
+
+SELECT 
+customer_id, 
+SUM(amount) as totalSum FROM Orders
+GROUP BY customer_id;
+
+GROUP BY HAVING:
+Similar to WHERE but filtering is applied on groups...
+
+SELECT 
+item, 
+SUM(amount) as totalSum FROM Orders
+GROUP BY item HAVING item='Keyboard' OR item!='Mouse';
+
+SQL Logical Query Execution Order:
+FROM Clause:
+
+Identify the table(s) and perform any joins or subqueries. This defines the dataset to work with.
+WHERE Clause:
+
+Filter rows based on conditions before any grouping or aggregation occurs.
+GROUP BY Clause:
+
+Group the filtered rows based on the specified column(s). Each unique value or combination of values creates a group.
+Aggregate Functions (SUM, COUNT, etc.):
+
+Compute aggregate values (like totals or counts) for each group.
+HAVING Clause:
+
+Filter groups based on the results of aggregate functions.
+SELECT Clause:
+
+Choose the columns or expressions to include in the result set. Any aliasing (e.g., AS) is applied here.
+ORDER BY Clause:
+
+Sort the result set based on one or more columns or expressions.
+LIMIT Clause (or FETCH/TOP):
+
+Restrict the number of rows returned in the final result.
