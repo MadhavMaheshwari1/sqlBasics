@@ -50,3 +50,6 @@ NULL Value -
 
 Strong Entity - It has independent existence and is identifiable by a primary key...
 Weak Entity - It has dependency on Strong Entity and has no primary key...
+
+Weak Entity: Exists only because of the parent table.
+Strong Entity: Exists and is identifiable on its own, even if related to a parent table.
