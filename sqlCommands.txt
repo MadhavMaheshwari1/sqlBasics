@@ -51,30 +51,15 @@ SUM(amount) as totalSum FROM Orders
 GROUP BY item HAVING item='Keyboard' OR item!='Mouse';
 
 SQL Logical Query Execution Order:
-FROM Clause:
 
-Identify the table(s) and perform any joins or subqueries. This defines the dataset to work with.
-WHERE Clause:
-
-Filter rows based on conditions before any grouping or aggregation occurs.
-GROUP BY Clause:
-
-Group the filtered rows based on the specified column(s). Each unique value or combination of values creates a group.
-Aggregate Functions (SUM, COUNT, etc.):
-
-Compute aggregate values (like totals or counts) for each group.
-HAVING Clause:
-
-Filter groups based on the results of aggregate functions.
-SELECT Clause:
-
-Choose the columns or expressions to include in the result set. Any aliasing (e.g., AS) is applied here.
-ORDER BY Clause:
-
-Sort the result set based on one or more columns or expressions.
-LIMIT Clause (or FETCH/TOP):
-
-Restrict the number of rows returned in the final result.
+FROM Clause:Identify the table(s) and perform any joins or subqueries. This defines the dataset to work with.
+WHERE Clause:Filter rows based on conditions before any grouping or aggregation occurs.
+GROUP BY Clause:Group the filtered rows based on the specified column(s). Each unique value or combination of values creates a group.
+Aggregate Functions (SUM, COUNT, etc.):Compute aggregate values (like totals or counts) for each group.
+HAVING Clause:Filter groups based on the results of aggregate functions.
+SELECT Clause:Choose the columns or expressions to include in the result set. Any aliasing (e.g., AS) is applied here.
+ORDER BY Clause:Sort the result set based on one or more columns or expressions.
+LIMIT Clause (or FETCH/TOP):Restrict the number of rows returned in the final result.
 
 DDL Constraints:
 
@@ -109,3 +94,31 @@ child table are also UPDATED...
 2. ON DELETE SET NULL:  If a reference record is deleted then the corresponding FK records in the 
 child table are set to NULL...
 3. ON DELETE RESTRICT: Prevents the deletion of parent record if some FK corresponding to the PK exists...
+
+REPLACE: Acts as insert if no such data exists else replaces the data...
+
+Replace vs Update:
+1. Replace adds new row if row doesn't exist but not the case with Update...
+
+JOINS:
+1. INNER JOIN: 
+1.1:Returns the resultant table with common FK and PK values and merges both the tables...
+1.2:So basically its intersection of both the tables based on the condition we will be providing...
+
+2. OUTER JOIN:
+2.1: LEFT JOIN: Returns all the data from the left table and matching data from the right table...
+2.2: RIGHT JOIN: Returns all the data from the right table and matching data from the left table...
+2.3: FULL JOIN: Union of both left and right JOIN, no keyword in SQL for it, have to seperately write left and right Join and 
+do union of both of them...
+2.4: CROSS JOIN: Cartesian Product...
+2.5: SELF JOIN: Emulated through aliasing and Inner Join...
+
+IMPORTANT:
+1. Use Aggregation functions when you want group wise aggregation, like max salary in each department...
+2. If you want to compare those individual rows inside a group, then use SELF JOIN... 
+
+Doing Join without using JOIN keyword:
+
+SELECT *
+FROM Orders as c1,Orders as c2
+WHERE c1.customer_id = c2.customer_id AND c1.amount<c2.amount;
