@@ -140,5 +140,34 @@ Subqueries:
 1. Alternative to JOINS...
 2. Outer query depends on inner Query...
 
+Aggregate Functions can also have conditional satifying criteria as well through CASE WHEN condition THEN VALUES END
+
+Creating a View:
+
+CREATE VIEW CUSTOM_VIEW FROM SELECT First_Name,Last_Name FROM tableName;
+
+Window Functions in SQL:
+
+Window functions allow us to perform complex aggregation or calculation on rows related by some value
+without altering the original view for the user...
+
+They can be categorized into two types:
+1. Ranking window functions...
+2. aggregate window functions... - Same as normal aggregate functions...
+
+SELECT *,AVG(salary) OVER(PARTITION BY department) AS AVG_SALARY
+FROM tableName
+
+Ranking Window Functions:
+
+1. Rank(): Assigns rank to all rows in each partition, but if two rows have same values on which partition was 
+applied then both of them have same rank in a partition and the next guy will be skipped with those much ranks.
+For eg: If we have two guys in a partition with the same values on which partition was applied then both of them
+will be assigned the same rank in a partition but after that the third guy will get rank 3 and not 2...
+
+2. DENSE_RANK(): 3rd guy will get rank 2 only...
+
+3. ROW_NUMBER(): Within each partition consecutive numbers...
+
 
 
