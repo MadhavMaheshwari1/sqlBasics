@@ -172,5 +172,13 @@ will be assigned the same rank in a partition but after that the third guy will 
 NULL denotes - Absence of a value...
 "" - It represents a value which is intentionally set as an empty string...
 
+General Syntax for a Window Function:
+
+<windowFunction>
+         OVER< PARTITION BY <>
+               ORDER BY <>
+               ROWS <>
+             >
+
 
 
